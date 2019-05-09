@@ -1,0 +1,22 @@
+﻿@model GitHubRepoCheck.Models.GitHubAPISearchResults
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <h2>Search Results...</h2>
+
+    <img class="img-responsive" img src="@Model.avatarURL" alt="GitHubProfilePic" width="500" height="500">
+    <h3>Name: @Model.username</h3>
+    <h3>Location: @Model.location</h3>
+
+    <h3>Top 5 Repos:</h3>
+
+    <ol>
+        @foreach (var keyValuePair in (Model.stars as Dictionary<string, int>))
+        {
+            <li><a href="@keyValuePair.Key">@keyValuePair.Key</a> is the repo with <b>@keyValuePair.Value</b> stars.</li>
+        }
+    </ol>
+</body>
